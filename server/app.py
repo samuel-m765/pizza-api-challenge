@@ -7,10 +7,10 @@ from flask_migrate import Migrate
 
 db = SQLAlchemy()
 migrate = Migrate()
-
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///school.db'
+    app.config['DEBUG'] = True  # Add this line
 
     db.init_app(app)
     migrate.init_app(app, db)
