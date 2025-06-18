@@ -5,7 +5,7 @@ from ..models import db
 
 restaurant_bp = Blueprint('restaurant_bp', __name__)
 
-@restaurant_bp.route('/', methods=['GET'])
+@restaurant_bp.route('/', methods=['POST'])
 def get_restaurants():
     restaurants = Restaurant.query.all()
     return jsonify([{

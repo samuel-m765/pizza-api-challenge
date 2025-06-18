@@ -1,4 +1,4 @@
-from . import db
+from server import db
 
 class Restaurant(db.Model):
     __tablename__ = 'restaurants'
@@ -7,4 +7,15 @@ class Restaurant(db.Model):
     name = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
 
-    restaurant_pizzas = db.relationship('RestaurantPizza', backref='restaurant', cascade='all, delete')
+    restaurant_pizzas = db.relationship(
+        'RestaurantPizza',
+        backref='restaurant',
+        cascade='all, delete'
+    )
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+            "address": self.address
+        }
